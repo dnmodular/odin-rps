@@ -2,9 +2,9 @@ function getComputerChoice() {
 
     let randomNumber = Math.floor(Math.random() * 3) + 1;
 
-    const rock = 'rock';
-    const paper = 'paper';
-    const scissors = 'scissors';
+    const rock = 'Rock';
+    const paper = 'Paper';
+    const scissors = 'Scissors';
 
     let computerChoice = '';
     if (randomNumber === 1) {
@@ -15,8 +15,32 @@ function getComputerChoice() {
         computerChoice = scissors;
     }
     console.log(computerChoice);
-
     return computerChoice;
 }
 
-getComputerChoice();
+function gameStart(playerSelection, computerSelection) {
+    
+    playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+
+    if (playerSelection === computerSelection) {
+        alert("draw!");
+    } else if (playerSelection !== computerSelection) {
+        if ((playerSelection === 'Rock') && (computerSelection === 'Paper')) {
+            alert("You lose! Paper beats Rock");
+        } else if ((playerSelection === 'Paper') && (computerSelection === 'Scissors')) {
+            alert("You lose! Scissors beats Paper")
+        } else if ((playerSelection === 'Scissors') && (computerSelection === 'Rock')) {
+            alert("You lose! Rock beats Scissors");
+
+        } else if ((playerSelection === 'Rock') && (computerSelection === 'Scissors')) {
+            alert("You win! Rock beats Scissors")
+        } else if ((playerSelection === 'Paper') && (computerSelection === 'Rock')) {
+            alert("You win! Paper beats Rock")
+        } else if ((playerSelection === 'Scissors') && (computerSelection === 'Paper')) {
+            alert("You win! Scissors beats Paper");
+        }
+    }
+}
+
+
+gameStart('paper', getComputerChoice());
