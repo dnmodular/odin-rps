@@ -2,6 +2,8 @@
 Donovan Narvaez
 This program will play 5 rounds of rock paper scissors.
 */
+
+// This function gets the computer's choice via rng.
 function getComputerChoice() {
 
     let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -21,8 +23,11 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function playRound(playerSelection, computerSelection) {
+// This function plays a round of rps and returns a win/loss/draw string.
+function playRound(computerSelection) {
     
+    let playerSelection = prompt('rock paper or scissors?');
+
     playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
 
     if (playerSelection === computerSelection) {
@@ -45,6 +50,8 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// This function brings all the other functions
+// together to play 5 rounds of rps and decides a winner.
 function game(x, y) {
     for (let numRounds = 0; numRounds < 5; numRounds ++) {
         playRound(x, y);
@@ -54,6 +61,5 @@ function game(x, y) {
     return 0;
 }
 
-const playerSelection = prompt('rock paper or scissors?');
 const computerSelection = getComputerChoice();
 console.log(game(playerSelection, computerSelection));
