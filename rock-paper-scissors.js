@@ -26,37 +26,34 @@ function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
 
     if (playerSelection === computerSelection) {
-        console.log("Draw!");
+        return "Draw!";
     } else if (playerSelection !== computerSelection) {
         if ((playerSelection === "Rock") && (computerSelection === "Paper")) {
-            console.log("You lose! Paper beats Rock");
+            return "You lose! Paper beats Rock";
         } else if ((playerSelection === "Paper") && (computerSelection === "Scissors")) {
-            console.log("You lose! Scissors beats Paper");
+            return "You lose! Scissors beats Paper";
         } else if ((playerSelection === "Scissors") && (computerSelection === "Rock")) {
-            console.log("You lose! Rock beats Scissors");
+            return "You lose! Rock beats Scissors";
 
         } else if ((playerSelection === "Rock") && (computerSelection === "Scissors")) {
-            console.log("You win! Rock beats Scissors");
+            return "You win! Rock beats Scissors";
         } else if ((playerSelection === "Paper") && (computerSelection === "Rock")) {
-            console.log("You win! Paper beats Rock");
+            return "You win! Paper beats Rock";
         } else if ((playerSelection === "Scissors") && (computerSelection === "Paper")) {
-            console.log("You win! Scissors beats Paper");
+            return "You win! Scissors beats Paper";
         }
     }
 }
 
 function game(x, y) {
-    let numRounds = 0;
-
-    while (numRounds < 5) {
-        getComputerChoice();
+    for (let numRounds = 0; numRounds < 5; numRounds ++) {
         playRound(x, y);
-        numRounds ++;
+       
     }
 
-    return "Game Over!";
+    return 0;
 }
 
-const playerSelection = prompt();
-let computerSelection = getComputerChoice();
+const playerSelection = prompt('rock paper or scissors?');
+const computerSelection = getComputerChoice();
 console.log(game(playerSelection, computerSelection));
