@@ -43,9 +43,14 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// This function brings all the other functions
-// together to play 5 rounds of rps and decides a winner.
+// This function brings all the other functions together.
 function game() {
+    
+}
+
+// This function plays 5 rounds and decides a winner.
+function decision() {
+    /*
     let numRounds = 0;
 
     while (numRounds < 5) {
@@ -54,6 +59,7 @@ function game() {
         console.log(playRound(playerSelection, computerSelection));
         numRounds ++;
     }
+    */
 
     if (computerScore > playerScore) {
         return `Computer wins! ${computerScore} to ${playerScore}!`;
