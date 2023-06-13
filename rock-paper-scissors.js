@@ -68,6 +68,12 @@ function decision() {
     }
 }
 
-
+function getPlayerChoice() {
+    const playerChoice = document.querySelectorAll(".btn");
+    playerChoice.addEventListener("click", (e) => {
+        console.log(e);
+    });
+}
 
 console.log(game());
+getPlayerChoice;
