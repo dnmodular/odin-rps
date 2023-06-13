@@ -1,0 +1,30 @@
+html {
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+}
+
+.holder {
+    outline: dotted red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.space {
+    outline: solid blue;
+    padding: 40%;
+}
+
+.container {
+    outline: solid yellow;
+}
+
+.btn {
+    border-radius: 2rem;
+    margin: 1rem;
+    padding: 1rem .5rem;
+    width: 10rem;
+    height: 10rem;
+    text-align: center;
+}
