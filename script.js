@@ -6,6 +6,9 @@ This program will play 5 rounds of rock paper scissors.
 let computerScore = 0;
 let playerScore = 0;
 
+const para = document.querySelector('p');
+const btns = document.querySelectorAll('btn');
+
 // This function gets the computer's choice via rng.
 function getComputerChoice() {
     let choices = ['Rock', 'Paper', 'Scissors'];
@@ -13,54 +16,51 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-// This function plays a round of rps and returns a win/loss/draw string.
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+// This function get the player's choice via clicking a button.
+function getPlayerChoice() {
+let playerChoice = '';
+    btns.forEach((button) => {
+        button.addEventListener('click', () => {
+            playerChoice.textContent = button.id;
+            return playerChoice;
+        });
+    });
+}
 
-    if (playerSelection === computerSelection) {
+// This function plays a round of rps and returns a win/loss/draw string.
+function playRound(playerChoice, computerChoice) {
+    if (playerChoice === computerChoice) {
         return "Draw!";
-    } else if (playerSelection !== computerSelection) {
-        if ((playerSelection === "Rock") && (computerSelection === "Paper")) {
+    } else if (playerChoice !== computerChoice) {
+        if ((playerChoice === "Rock") && (computerChoice === "Paper")) {
             computerScore += 1;
             return "You lose! Paper beats Rock";
-        } else if ((playerSelection === "Paper") && (computerSelection === "Scissors")) {
+        } else if ((playerChoice === "Paper") && (computerChoice === "Scissors")) {
             computerScore += 1;
             return "You lose! Scissors beats Paper";
-        } else if ((playerSelection === "Scissors") && (computerSelection === "Rock")) {
+        } else if ((playerChoice === "Scissors") && (computerChoice === "Rock")) {
             computerScore += 1;
             return "You lose! Rock beats Scissors";
 
-        } else if ((playerSelection === "Rock") && (computerSelection === "Scissors")) {
+        } else if ((playerChoice === "Rock") && (computerChoice === "Scissors")) {
             playerScore += 1;
             return "You win! Rock beats Scissors";
-        } else if ((playerSelection === "Paper") && (computerSelection === "Rock")) {
+        } else if ((playerChoice === "Paper") && (computerChoice === "Rock")) {
             playerScore += 1;
             return "You win! Paper beats Rock";
-        } else if ((playerSelection === "Scissors") && (computerSelection === "Paper")) {
+        } else if ((playerChoice === "Scissors") && (computerChoice === "Paper")) {
             playerScore += 1;
             return "You win! Scissors beats Paper";
         }
     }
 }
 
-// This function brings all the other functions together.
-function game() {
-    
-}
-
 // This function plays 5 rounds and decides a winner.
-function decision() {
-    
-    let numRounds = 0;
-
+function decision(numRounds, playerChoice, computerChoice) {
     while (numRounds < 5) {
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+        console.log(playRound(playerChoice, computerChoice));
         numRounds ++;
     }
-    
-
     if (computerScore > playerScore) {
         return `Computer wins! ${computerScore} to ${playerScore}!`;
     } else {
@@ -68,15 +68,14 @@ function decision() {
     }
 }
 
-const para = document.querySelector('p');
-const btns = document.querySelectorAll('btn');
+// This function brings all the other functions together.
+function playGame() {
+    let numRounds = 0;
 
-function getPlayerChoice() {
-const playerChoice = "";
-    btns.forEach((button) => {
-        button.addEventListener('click', () => {
-            playerChoice.textContent = button.id;
-            para.textContent = button.id;
-        });
-    });
+    const playerChoice = getPlayerChoice();
+    const computerChoice = getComputerChoice();
+
+    playRound(playerChoice, computerChoice);
+
+    decision(numRounds, playerChoice, computerChoice);
 }
