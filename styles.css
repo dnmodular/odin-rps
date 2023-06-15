@@ -12,13 +12,7 @@ html {
 
 .space {
     padding: 40%;
-}
-
-.container {
-    outline: double paleturquoise;
-    background-color: rgb(98, 126, 155);
-    border-radius: 2rem;
-}    
+}  
 
 .btn {
     border-radius: 2rem;
