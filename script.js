@@ -16,16 +16,18 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+/*
 // This function get the player's choice via clicking a button.
 function getPlayerChoice() {
 let playerChoice = '';
     btns.forEach((button) => {
         button.addEventListener('click', () => {
-            playerChoice.textContent = button.id;
-            return playerChoice;
+            playerChoice = button.id;
         });
+        return playerChoice;
     });
 }
+*/
 
 // This function plays a round of rps and returns a win/loss/draw string.
 function playRound(playerChoice, computerChoice) {
