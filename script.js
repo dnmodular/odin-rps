@@ -55,9 +55,9 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 
-// This function plays 5 rounds and decides a winner.
-function decision(numRounds, playerChoice, computerChoice) {
-    while (numRounds < 5) {
+// This function plays a game of rps and decides a winner.
+function getDecision(numRounds, totalRounds, playerChoice, computerChoice) {
+    while (numRounds < totalRounds) {
         console.log(playRound(playerChoice, computerChoice));
         numRounds ++;
     }
@@ -71,11 +71,12 @@ function decision(numRounds, playerChoice, computerChoice) {
 // This function brings all the other functions together.
 function playGame() {
     let numRounds = 0;
+    let totalRounds = 5;
 
     const playerChoice = getPlayerChoice();
     const computerChoice = getComputerChoice();
 
+    getRounds(numRounds, totalRounds);
     playRound(playerChoice, computerChoice);
-
-    decision(numRounds, playerChoice, computerChoice);
+    getDecision(numRounds, totalRounds, playerChoice, computerChoice);
 }
